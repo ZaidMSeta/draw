@@ -5,7 +5,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const shapeSelector = document.getElementById("shape");
 const colorPicker = document.getElementById("color");
-const sizeButtons = document.querySelectorAll(".size-btn");
+const sizeSlider = document.getElementById("size");
 const undoButton = document.getElementById("undo");
 const clearButton = document.getElementById("clear");
 
@@ -17,7 +17,7 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 // Store drawn shapes
 let shapes = [];
-let currentSize = 20; // Default size
+let currentSize = parseInt(sizeSlider.value); // Default size from slider
 
 // Shape class
 class Shape {
@@ -53,6 +53,11 @@ function redrawCanvas() {
     shapes.forEach(shape => shape.draw());
 }
 
+// Update size based on slider
+sizeSlider.addEventListener("input", () => {
+    currentSize = parseInt(sizeSlider.value);
+});
+
 // Add shape on click
 canvas.addEventListener("click", (e) => {
     const color = colorPicker.value;
@@ -64,13 +69,6 @@ canvas.addEventListener("click", (e) => {
     shapes.push(shape);
     shape.draw();
     saveToLocalStorage();
-});
-
-// Set shape size when clicking size buttons
-sizeButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        currentSize = parseInt(button.dataset.size);
-    });
 });
 
 // Undo last action
