@@ -1,25 +1,19 @@
-// canvas-app.js: A simple drawing app using HTML5 Canvas
 
-// Select elements
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const shapeSelector = document.getElementById("shape");
 const colorPicker = document.getElementById("color");
-const sizeButtons = document.querySelectorAll(".size-btn");
+const sizeSlider = document.getElementById("size");
 const undoButton = document.getElementById("undo");
 const clearButton = document.getElementById("clear");
 
-// Canvas settings
 canvas.width = window.innerWidth * 0.8;
 canvas.height = window.innerHeight * 0.7;
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-// Store drawn shapes
 let shapes = [];
-let currentSize = 20; // Default size
 
-// Shape class
 class Shape {
     constructor(x, y, size, color, type) {
         this.x = x;
@@ -45,7 +39,6 @@ class Shape {
     }
 }
 
-// Draw all stored shapes
 function redrawCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "white";
@@ -53,46 +46,35 @@ function redrawCanvas() {
     shapes.forEach(shape => shape.draw());
 }
 
-// Add shape on click
 canvas.addEventListener("click", (e) => {
+    const size = parseInt(sizeSlider.value);
     const color = colorPicker.value;
     const type = shapeSelector.value;
     const x = e.offsetX;
     const y = e.offsetY;
     
-    const shape = new Shape(x, y, currentSize, color, type);
+    const shape = new Shape(x, y, size, color, type);
     shapes.push(shape);
     shape.draw();
     saveToLocalStorage();
 });
 
-// Set shape size when clicking size buttons
-sizeButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        currentSize = parseInt(button.dataset.size);
-    });
-});
-
-// Undo last action
 undoButton.addEventListener("click", () => {
     shapes.pop();
     redrawCanvas();
     saveToLocalStorage();
 });
 
-// Clear canvas
 clearButton.addEventListener("click", () => {
     shapes = [];
     redrawCanvas();
     saveToLocalStorage();
 });
 
-// Save to local storage
 function saveToLocalStorage() {
     localStorage.setItem("shapes", JSON.stringify(shapes));
 }
 
-// Load from local storage
 function loadFromLocalStorage() {
     const storedShapes = JSON.parse(localStorage.getItem("shapes"));
     if (storedShapes) {
@@ -101,5 +83,4 @@ function loadFromLocalStorage() {
     }
 }
 
-// Load stored data on page load
 window.onload = loadFromLocalStorage;
