@@ -2,11 +2,50 @@
 body {
     text-align: center;
     font-family: Arial, sans-serif;
+    background-color: lightblue;
 }
 canvas {
     border: 1px solid black;
-    margin-top: 20px;
+    margin:auto;
+    
 }
 .controls {
     margin-top: 10px;
+    flex: auto;
+    flex-direction: row;
+    display: flex;
+}
+.control-section {
+    padding-left: 5%;
+    margin: auto;
+    padding-bottom: 1%
+
+}
+button {
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: gray;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 1%;
+    border: 1px solid #9f9f9f;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+        padding-top: 1%;
+        align-items: left;
+    }
+    .control-section {
+        padding-top: 1%;
+    }
 }

@@ -7,10 +7,12 @@ const sizeSlider = document.getElementById("size");
 const undoButton = document.getElementById("undo");
 const clearButton = document.getElementById("clear");
 
+
 canvas.width = window.innerWidth * 0.8;
 canvas.height = window.innerHeight * 0.7;
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 
 let shapes = [];
 
@@ -84,3 +86,5 @@ function loadFromLocalStorage() {
 }
 
 window.onload = loadFromLocalStorage;
+
+
