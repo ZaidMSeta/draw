@@ -3,6 +3,9 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     background-color: lightblue;
+    padding: 0;
+    align-items: center;
+    flex-direction: column;
 }
 canvas {
     border: 1px solid black;
@@ -10,28 +13,38 @@ canvas {
     
 }
 .controls {
-    margin-top: 10px;
-    flex: auto;
-    flex-direction: row;
     display: flex;
-}
-.control-section {
-    padding-left: 5%;
-    margin: auto;
-    padding-bottom: 1%
+    justify-content: center;
+    background: white;
+    padding: 2%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
 
 }
+
+.control-section {
+    min-width: 120px;
+    text-align: center;
+    margin: 10px;
+}
 button {
-    background: white;
+    background: lightgray;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
+    margin-bottom: 1%;
 }
 
 button:hover {
     background: gray;
 }
 
+label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+}
 input[type="text"], select {
     width: 100%;
     padding: 1%;
@@ -42,10 +55,13 @@ input[type="text"], select {
 @media (max-width: 600px) {
     .controls {
         flex-direction: column;
-        padding-top: 1%;
-        align-items: left;
+        padding: 1%;
+        align-items: center;
     }
     .control-section {
         padding-top: 1%;
+    }
+    canvas {
+        width: 95%;
     }
 }
