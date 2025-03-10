@@ -1,15 +1,29 @@
+/**
+Abderahman Mohammed, mohaa220, 400578814
+Zaid Seta, setaz, 400591432
+
+Created: 8/03/2025
+
+This is the css page, which holds a desktop version of the site along with a mobile friendly one.
+*/
+
 
 body {
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: Georgia, Arial, sans-serif;
     background-color: lightblue;
     padding: 0;
     align-items: center;
     flex-direction: column;
 }
 canvas {
-    border: 1px solid black;
+    border: 2px solid black;
+    border-radius: 8px;
     margin:auto;
+    
+}
+
+h1 {
     
 }
 .controls {
@@ -17,14 +31,15 @@ canvas {
     justify-content: center;
     background: white;
     padding: 2%;
-    border-radius: 10px;
+    border-radius: 8px;
     margin-bottom: 20px;
-    border: 1px solid black;
+    border: 2px solid black;
 
 }
 
 .control-section {
-    min-width: 120px;
+    gap: 0.5rem;
+    min-width: 140px;
     text-align: center;
     margin: 10px;
 }
@@ -38,8 +53,15 @@ button {
 
 button:hover {
     background: gray;
+    
+}
+#clear {
+    background: rgb(255, 85, 67);
 }
 
+#clear:hover {
+    background: #a33125;
+}
 label {
     display: block;
     font-size: 1rem;
@@ -48,10 +70,12 @@ label {
 input[type="text"], select {
     width: 100%;
     padding: 1%;
-    border: 1px solid #9f9f9f;
+    border: 2px solid rgb(197, 197, 197);
     border-radius: 5px;
 }
-
+input[type="color"] {
+    background-color: rgb(255, 255, 255);
+}
 @media (max-width: 600px) {
     .controls {
         flex-direction: column;
